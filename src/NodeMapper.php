@@ -56,12 +56,13 @@ class NodeMapper
         Hydrators\TextHydrator::class => Nodes\Text::class,
     ];
 
-    public function createNodeFromSchema(object $schema): Node
+    public function createNodeFromSchema(object $schema): ?Node
     {
         $type = $schema->type ?? throw new RuntimeException('Property [type] is required');
 
         if (! array_key_exists($schema->type, $this->nodesMap)) {
-            throw new RuntimeException(sprintf('Unsupported node type [%s]', $type));
+            // throw new RuntimeException(sprintf('Unsupported node type [%s]', $type));
+
         }
 
         $node = new $this->nodesMap[$type]();
@@ -85,6 +86,10 @@ class NodeMapper
 
         foreach ($schemas as $schema) {
             $node = $this->createNodeFromSchema($schema);
+
+            if (!$node){
+                continue;
+            }
 
             if (! $parent->canContain($node::class)) {
                 throw new RuntimeException(
