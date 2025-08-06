@@ -62,7 +62,7 @@ class NodeMapper
 
         if (! array_key_exists($schema->type, $this->nodesMap)) {
             // throw new RuntimeException(sprintf('Unsupported node type [%s]', $type));
-
+            return null;
         }
 
         $node = new $this->nodesMap[$type]();
