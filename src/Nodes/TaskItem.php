@@ -1,0 +1,39 @@
+<?php
+
+namespace Karvaka\AdfToGfm\Nodes;
+
+use Karvaka\AdfToGfm\BlockNode;
+use Karvaka\AdfToGfm\HasDepth;
+use Karvaka\AdfToGfm\Node;
+
+class TaskItem extends BlockNode
+{
+    use HasDepth;
+
+    public function toMarkdown(): string
+    {
+        $state = $this->attrs['state'] ?? 'TODO';
+        $checkbox = $state === 'DONE' ? '[x]' : '[ ]';
+
+        $text = implode(
+            '',
+            array_map(function (Node $node) {
+                return $node->toMarkdown();
+            }, $this->content())
+        );
+
+        return str_repeat(self::INDENT, $this->depth - 1) . "- {$checkbox} {$text}";
+    }
+
+    public function contains(): array
+    {
+        return [
+            BulletList::class,
+            CodeBlock::class,
+            MediaSingle::class,
+            OrderedList::class,
+            Paragraph::class,
+            Text::class,
+        ];
+    }
+}
