@@ -76,6 +76,10 @@ class NodeMapper
             $node->setContent($this->createContentNodesFromSchemas($node, $schema->content));
         }
 
+        if ($node instanceof BlockNode && isset($schema->attrs) && method_exists($node, 'setAttrs')) {
+            $node->setAttrs((array) $schema->attrs);
+        }
+
         return $node;
     }
 
