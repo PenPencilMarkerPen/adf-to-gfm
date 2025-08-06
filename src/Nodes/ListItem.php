@@ -35,6 +35,14 @@ class ListItem extends BlockNode
             OrderedList::class,
             Paragraph::class,
             HardBreak::class,
+            TaskList::class,
+            InlineCard::class,
+            Media::class,
+            MediaGroup::class,
+            Mention::class,
+            OrderedList::class,
+            Status::class,
+            OrderedList::class,
         ];
     }
 }
