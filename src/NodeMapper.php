@@ -35,6 +35,8 @@ class NodeMapper
         'tableHeader' => Nodes\TableHeader::class,
         'tableRow' => Nodes\TableRow::class,
         'text' => Nodes\Text::class,
+        'taskList' => Nodes\TaskList::class,
+        'taskItem' => Nodes\TaskItem::class,
     ];
 
     private array $hydratorsMap = [
