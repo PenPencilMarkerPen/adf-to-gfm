@@ -34,6 +34,7 @@ class ListItem extends BlockNode
             MediaSingle::class,
             OrderedList::class,
             Paragraph::class,
+            HardBreak::class,
         ];
     }
 }

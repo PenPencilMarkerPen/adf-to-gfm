@@ -34,6 +34,7 @@ class TaskItem extends BlockNode
             OrderedList::class,
             Paragraph::class,
             Text::class,
+            HardBreak::class,
         ];
     }
 }
