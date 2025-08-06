@@ -12,7 +12,7 @@ class TaskItem extends BlockNode
 
     public function toMarkdown(): string
     {
-        $state = $this->attrs['state'] ?? 'TODO';
+        $state = $this->getAttrs()['state'] ?? 'TODO';
         $checkbox = $state === 'DONE' ? '[x]' : '[ ]';
 
         $text = implode(

@@ -7,6 +7,7 @@ namespace Karvaka\AdfToGfm;
 abstract class BlockNode extends Node
 {
     private array $content = [];
+    private mixed $attrs = [];
 
     public function setContent(array $content): static
     {
@@ -38,5 +39,16 @@ abstract class BlockNode extends Node
         }
 
         return false;
+    }
+
+    public function setAttrs(mixed $attrs)
+    {
+        $this->attrs = $attrs;
+        return $this;
+    }
+
+    public function getAttrs(): mixed 
+    {
+        return $this->attrs;
     }
 }
