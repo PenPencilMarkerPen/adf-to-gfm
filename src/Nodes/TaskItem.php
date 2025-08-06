@@ -35,6 +35,13 @@ class TaskItem extends BlockNode
             Paragraph::class,
             Text::class,
             HardBreak::class,
+            TaskList::class,
+            InlineCard::class,
+            Media::class,
+            MediaGroup::class,
+            Mention::class,
+            OrderedList::class,
+            Status::class,
         ];
     }
 }
