@@ -25,6 +25,10 @@ class OrderedList extends BlockNode
 
     public function toMarkdown(): string
     {
+
+        $start = $this->order > 0 && $this->order <= count($this->content())? $this->order : 1;
+        $end = $start + count($this->content()) - 1;
+
         return implode(
             self::BREAK,
             array_map(
@@ -32,11 +36,11 @@ class OrderedList extends BlockNode
                     str_repeat(self::INDENT, ($this->depth - 1)) .
                     sprintf('%s. %s', $order, $node->setDepth($this->depth)->toMarkdown()),
                 $this->content(),
-                range($this->order, $this->order + count($this->content()) - 1)
+                range($start, $end)
             )
         );
     }
-
+    
     public function contains(): array
     {
         return [

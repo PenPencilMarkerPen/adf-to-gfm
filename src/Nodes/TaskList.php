@@ -11,6 +11,7 @@ class TaskList extends BlockNode
 
     public function toMarkdown(): string
     {
+
         return implode(
             self::BREAK,
             array_map(

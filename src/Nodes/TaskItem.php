@@ -10,10 +10,11 @@ class TaskItem extends BlockNode
 {
     use HasDepth;
 
+    private string $state = '';
+
     public function toMarkdown(): string
     {
-        $state = $this->getAttrs()['state'] ?? 'TODO';
-        $checkbox = $state === 'DONE' ? '[x]' : '[ ]';
+        $checkbox = $this->state === 'DONE' ? '[x]' : '[ ]';
 
         $text = implode(
             '',
@@ -22,7 +23,7 @@ class TaskItem extends BlockNode
             }, $this->content())
         );
 
-        return str_repeat(self::INDENT, $this->depth - 1) . "- {$checkbox} {$text}";
+        return str_repeat(self::INDENT, $this->depth - 1) . "{$checkbox} {$text}";
     }
 
     public function contains(): array
@@ -42,5 +43,15 @@ class TaskItem extends BlockNode
             Mention::class,
             Status::class,
         ];
+    }
+
+    public function setState(string $state): void 
+    {
+        $this->state = $state;
+    }
+
+    public function getState(): string 
+    {
+        return $this->state;
     }
 }

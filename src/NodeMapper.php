@@ -54,12 +54,14 @@ class NodeMapper
         Hydrators\StatusHydrator::class => Nodes\Status::class,
         Hydrators\TableHydrator::class => Nodes\Table::class,
         Hydrators\TextHydrator::class => Nodes\Text::class,
+        Hydrators\TaskListHydrator::class => Nodes\TaskList::class,
+        Hydrators\TaskItemHydrator::class => Nodes\TaskItem::class,
     ];
 
     public function createNodeFromSchema(object $schema): ?Node
     {
         $type = $schema->type ?? throw new RuntimeException('Property [type] is required');
-
+        
         if (! array_key_exists($schema->type, $this->nodesMap)) {
             // throw new RuntimeException(sprintf('Unsupported node type [%s]', $type));
             return null;
@@ -75,10 +77,6 @@ class NodeMapper
 
         if ($node instanceof BlockNode && isset($schema->content)) {
             $node->setContent($this->createContentNodesFromSchemas($node, $schema->content));
-        }
-
-        if ($node instanceof BlockNode && isset($schema->attrs) && method_exists($node, 'setAttrs')) {
-            $node->setAttrs((array) $schema->attrs);
         }
 
         return $node;
