@@ -40,7 +40,6 @@ class TaskItem extends BlockNode
             Media::class,
             MediaGroup::class,
             Mention::class,
-            OrderedList::class,
             Status::class,
         ];
     }
