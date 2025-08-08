@@ -2,15 +2,15 @@
     "name": "penpencilmarkerpen/adf-to-gfm",
     "description": "Atlassian Document Format (ADF) to GitHub Flavored Markdown (GFM) converter",
     "keywords": [
-        "karvaka",
+        "penpencilmarkerpen",
         "adf-to-gfm"
     ],
     "homepage": "https://github.com/PenPencilMarkerPen/adf-to-gfm",
     "license": "MIT",
     "authors": [
         {
-            "name": "Dmytro Karvaka",
-            "email": "karvaka@karvaka.com",
+            "name": "Fork PenPencilMarkerPen",
+            "email": "penpencilmarkerpen@google.com",
             "role": "Developer"
         }
     ],
