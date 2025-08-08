@@ -17,7 +17,7 @@ class ListItem extends BlockNode
         return implode(
             self::BREAK,
             array_map(function (Node $node) {
-                if ($node instanceof BulletList || $node instanceof OrderedList) {
+                if ($node instanceof BulletList || $node instanceof OrderedList || $node instanceof TaskList) {
                     return $node->setDepth($this->depth + 1)->toMarkdown();
                 }
 
@@ -40,9 +40,7 @@ class ListItem extends BlockNode
             Media::class,
             MediaGroup::class,
             Mention::class,
-            OrderedList::class,
             Status::class,
-            OrderedList::class,
         ];
     }
 }

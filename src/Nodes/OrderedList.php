@@ -32,7 +32,7 @@ class OrderedList extends BlockNode
                     str_repeat(self::INDENT, ($this->depth - 1)) .
                     sprintf('%s. %s', $order, $node->setDepth($this->depth)->toMarkdown()),
                 $this->content(),
-                range($this->order, count($this->content()))
+                range($this->order, $this->order + count($this->content()) - 1)
             )
         );
     }
